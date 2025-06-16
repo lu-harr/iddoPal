@@ -35,7 +35,7 @@ devtools::install_github("luharr/iddoPal")
 library(iddoPal)
 ```
 
-`iddoPal` comes with 1 1 discrete colour palette and 5 sequential colour
+`iddoPal` comes with 1 3 discrete colour palette and 5 sequential colour
 palettes, which can be accessed from the following R objects:
 
 - `iddo_palettes_discrete` for discrete palettes
@@ -113,7 +113,7 @@ ggplot(faithfuld,
 
 # This isn't very elegant but I promise Base Graphics is usually the most 
 # straightforward way of doing things ! I promise !
-pal <- iddo_palettes$all_cols[c(1,2,7)]
+pal <- iddo_palettes$iddo[c(1,4,7)]
 
 plot(iris$Sepal.Length, iris$Petal.Length, 
      col = alpha(pal[as.numeric(as.factor(iris$Species))], 0.5),
