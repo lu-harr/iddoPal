@@ -46,7 +46,7 @@ You can install the development version of `iddoPal` from [GitHub](https://githu
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("luharr/iddoPal")
+devtools::install_github("lu-harr/iddoPal")
 ```
 
 ## Usage
