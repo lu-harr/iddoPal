@@ -1,0 +1,130 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE, cache = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%",
+  cache = FALSE,
+  asciicast_theme = "pkgdown"
+)
+asciicast::init_knitr_engine(
+  startup = quote({
+    library(iddoPal)
+    set.seed(1) }),
+  echo = TRUE,
+  echo_input = FALSE
+)
+```
+
+# iddoPal
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+Colour palettes for R inspired by the [Infectious Diseases Data Observatory](https://www.iddo.org).
+
+This package was written using the `palettes` package, using the accompanying 
+[guide](https://mccarthy-m-g.github.io/palettes/articles/creating-packages.html).
+See also Gerry Ryan's [`idpalette`](https://github.com/idem-lab/idpalette).
+
+## Included palettes
+
+```{r echo=FALSE, message=FALSE}
+library(iddoPal)
+plot(iddoPal::iddo_palettes)
+```
+
+## Installation
+
+You can install the development version of `iddoPal` from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("luharr/iddoPal")
+```
+
+## Usage
+
+```{r}
+library(iddoPal)
+```
+
+`iddoPal` comes with 1 `r length(iddo_palettes_discrete)` discrete colour palette and `r length(iddo_palettes_sequential)` sequential colour palettes, which can be accessed from the following R objects:
+
+- `iddo_palettes_discrete` for discrete palettes
+- `iddo_palettes_sequential` for sequential palettes
+- `iddo_palettes` for all palettes
+
+To preview the palettes in the console simply print them:
+
+```{asciicast iddo-palettes-discrete}
+iddo_palettes_discrete
+```
+
+To preview the palettes in the Plots pane use `plot()`:
+
+```{r plot-iddo-palettes-sequential}
+plot(iddo_palettes_sequential)
+```
+
+To cast palettes to a tibble use `as_tibble()`:
+
+```{asciicast as-tibble}
+as_tibble(iddo_palettes)
+```
+
+Palettes can be subset using `[`, `[[`, and `$`.
+  
+  - To extract a single palette as a colour vector use `[[` or `$`:
+
+    ```{asciicast extract-vector-1}
+    iddo_palettes_sequential[["blue_to_red"]]
+    ```
+    
+    ```{asciicast extract-vector-2}
+    iddo_palettes_sequential$greys
+    ```
+    
+  - To get names of palettes use `names()`:
+
+    ```{r}
+    names(iddo_palettes_sequential)
+    ```
+
+## Demonstration
+
+`iddo_palettes` may be then be used for R Base Graphics or `ggplot2` visualisations:
+
+```{r demo}
+library(ggplot2)
+
+ggplot(faithfuld,
+       aes(waiting, eruptions)) +
+  geom_raster(
+    aes(fill = density)
+  ) +
+  scale_fill_gradientn(
+    colours = iddo_palettes$blue_to_red
+  )
+
+# This isn't very elegant but I promise Base Graphics is usually the most 
+# straightforward way of doing things ! I promise !
+pal <- iddo_palettes$all_cols[c(1,2,7)]
+
+plot(iris$Sepal.Length, iris$Petal.Length, 
+     col = alpha(pal[as.numeric(as.factor(iris$Species))], 0.5),
+     pch = 16, xlab="Sepal Length", ylab="Petal Length")
+legend("bottomright", 
+       fill = pal,
+       levels(as.factor(iris$Species)))
+```
+
+## License
+
+CC0

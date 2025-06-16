@@ -1,0 +1,19 @@
+Package: iddoPal
+Title: IDDO Colour Palettes
+Version: 0.0.0.9000
+Authors@R: 
+    person("Lucinda", "Harrison", , "lucy.harrison@wwarn.org", role = c("aut", "cre"))
+Description: A home for the IDDO colour palette. Built using the
+    'palettes' package, which provides methods for printing, formatting,
+    casting and coercion, extraction and updating of components, plotting,
+    colour mixing arithmetic, and colour interpolation.
+License: CC0
+URL: https://github.com/luharr/iddoPal
+BugReports: https://github.com/luharr/iddoPal/issues
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Depends: 
+    palettes,
+    R (>= 3.5)
+LazyData: true
