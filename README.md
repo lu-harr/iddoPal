@@ -35,7 +35,7 @@ devtools::install_github("lu-harr/iddoPal")
 library(iddoPal)
 ```
 
-`iddoPal` comes with 1 3 discrete colour palette and 5 sequential colour
+`iddoPal` comes with 5 discrete colour palettes and 8 sequential colour
 palettes, which can be accessed from the following R objects:
 
 - `iddo_palettes_discrete` for discrete palettes
@@ -45,10 +45,10 @@ palettes, which can be accessed from the following R objects:
 To preview the palettes in the console simply print them:
 
 ``` r
-iddo_palettes_discrete
+# this doesn't render nicely in .Rmd, but try in your own R session:
+iddo_palettes_sequential
+iddo_palettes_discrete 
 ```
-
-<img src="man/figures/README-/iddo-palettes-discrete.svg" width="100%" />
 
 To preview the palettes in the Plots pane use `plot()`:
 
@@ -71,7 +71,7 @@ Palettes can be subset using `[`, `[[`, and `$`.
 - To extract a single palette as a colour vector use `[[` or `$`:
 
   ``` r
-  iddo_palettes_sequential[["blue_to_red"]]
+  iddo_palettes_sequential[["BlWhRd"]]
   ```
 
   <img src="man/figures/README-/extract-vector-1.svg" width="100%" />
@@ -86,7 +86,8 @@ Palettes can be subset using `[`, `[[`, and `$`.
 
   ``` r
   names(iddo_palettes_sequential)
-  #> [1] "blues"       "reds"        "reds_mute"   "greys"       "blue_to_red"
+  #> [1] "Blues"      "Reds"       "soft_blues" "soft_reds"  "greys"     
+  #> [6] "BlWhRd"     "BlRd"       "BlGyRd"
   ```
 
 ## Demonstration
@@ -103,7 +104,7 @@ ggplot(faithfuld,
     aes(fill = density)
   ) +
   scale_fill_gradientn(
-    colours = iddo_palettes$blue_to_red
+    colours = iddo_palettes$BlWhRd
   )
 ```
 
@@ -113,7 +114,7 @@ ggplot(faithfuld,
 
 # This isn't very elegant but I promise Base Graphics is usually the most 
 # straightforward way of doing things ! I promise !
-pal <- iddo_palettes$iddo[c(1,4,7)]
+pal <- iddo_palettes$iddo_new[3:5]
 
 plot(iris$Sepal.Length, iris$Petal.Length, 
      col = alpha(pal[as.numeric(as.factor(iris$Species))], 0.5),

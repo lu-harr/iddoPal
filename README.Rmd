@@ -55,7 +55,7 @@ devtools::install_github("lu-harr/iddoPal")
 library(iddoPal)
 ```
 
-`iddoPal` comes with 1 `r length(iddo_palettes_discrete)` discrete colour palette and `r length(iddo_palettes_sequential)` sequential colour palettes, which can be accessed from the following R objects:
+`iddoPal` comes with `r length(iddo_palettes_discrete)` discrete colour palettes and `r length(iddo_palettes_sequential)` sequential colour palettes, which can be accessed from the following R objects:
 
 - `iddo_palettes_discrete` for discrete palettes
 - `iddo_palettes_sequential` for sequential palettes
@@ -63,8 +63,10 @@ library(iddoPal)
 
 To preview the palettes in the console simply print them:
 
-```{asciicast iddo-palettes-discrete}
-iddo_palettes_discrete
+```{asciicast iddo-palettes-discrete, eval=FALSE}
+# this doesn't render nicely in .Rmd, but try in your own R session:
+iddo_palettes_sequential
+iddo_palettes_discrete 
 ```
 
 To preview the palettes in the Plots pane use `plot()`:
@@ -84,7 +86,7 @@ Palettes can be subset using `[`, `[[`, and `$`.
   - To extract a single palette as a colour vector use `[[` or `$`:
 
     ```{asciicast extract-vector-1}
-    iddo_palettes_sequential[["blue_to_red"]]
+    iddo_palettes_sequential[["BlWhRd"]]
     ```
     
     ```{asciicast extract-vector-2}
@@ -110,12 +112,12 @@ ggplot(faithfuld,
     aes(fill = density)
   ) +
   scale_fill_gradientn(
-    colours = iddo_palettes$blue_to_red
+    colours = iddo_palettes$BlWhRd
   )
 
 # This isn't very elegant but I promise Base Graphics is usually the most 
 # straightforward way of doing things ! I promise !
-pal <- iddo_palettes$iddo[c(1,4,7)]
+pal <- iddo_palettes$iddo_new[3:5]
 
 plot(iris$Sepal.Length, iris$Petal.Length, 
      col = alpha(pal[as.numeric(as.factor(iris$Species))], 0.5),

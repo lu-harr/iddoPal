@@ -9,21 +9,21 @@
 \format{
 \subsection{\code{iddo_palettes}}{
 
-An object of class \code{palettes_palette} with 8
+An object of class \code{palettes_palette} with 13
 colour palettes. Use \code{names(iddo_palettes)} to return all palette names.
 }
 
 \subsection{\code{iddo_palettes_discrete}}{
 
 An object of class \code{palettes_palette} with
-3 discrete colour palettes.
+5 discrete colour palettes.
 Use \code{names(iddo_palettes_discrete)} to return all palette names.
 }
 
 \subsection{\code{iddo_palettes_sequential}}{
 
 An object of class \code{palettes_palette} with
-5 sequential colour palettes.
+8 sequential colour palettes.
 Use \code{names(iddo_palettes_sequential)} to return all palette names.
 }
 }
