@@ -4,6 +4,7 @@
 # iddoPal
 
 <!-- badges: start -->
+
 <!-- badges: end -->
 
 Colour palettes for R inspired by the [Infectious Diseases Data
@@ -35,7 +36,7 @@ devtools::install_github("lu-harr/iddoPal")
 library(iddoPal)
 ```
 
-`iddoPal` comes with 5 discrete colour palettes and 8 sequential colour
+`iddoPal` comes with 5 discrete colour palettes and 9 sequential colour
 palettes, which can be accessed from the following R objects:
 
 - `iddo_palettes_discrete` for discrete palettes
@@ -87,7 +88,7 @@ Palettes can be subset using `[`, `[[`, and `$`.
   ``` r
   names(iddo_palettes_sequential)
   #> [1] "Blues"      "Reds"       "soft_blues" "soft_reds"  "greys"     
-  #> [6] "BlWhRd"     "BlRd"       "BlGyRd"
+  #> [6] "BlWhRd"     "BlRd"       "BlGyRd"     "BlGyRdPlus"
   ```
 
 ## Demonstration
@@ -125,6 +126,52 @@ legend("bottomright",
 ```
 
 <img src="man/figures/README-demo-2.png" width="100%" />
+
+I’ve found the `BlGyRd` palette to be very handy for cases where we need
+a diverging palette with clear extremes and midpoint, but I’ve added
+`BlGyRdPlus` for even more variation either side of the middle:
+
+``` r
+library(ggplot2)
+library(dplyr)
+#> 
+#> Attaching package: 'dplyr'
+#> The following objects are masked from 'package:stats':
+#> 
+#>     filter, lag
+#> The following objects are masked from 'package:base':
+#> 
+#>     intersect, setdiff, setequal, union
+library(cowplot)
+
+p1 <- ggplot(faithfuld %>%
+         mutate(density = density - min(density),
+                density = density / max(density)),
+       aes(waiting, eruptions)) +
+  geom_raster(
+    aes(fill = density)
+  ) +
+  scale_fill_gradientn(
+    colours = iddo_palettes$BlGyRd
+  )
+
+p2 <- ggplot(faithfuld %>%
+         mutate(density = density - min(density),
+                density = density / max(density)),
+       aes(waiting, eruptions)) +
+  geom_raster(
+    aes(fill = density)
+  ) +
+  scale_fill_gradientn(
+    colours = iddo_palettes$BlGyRdPlus
+  )
+
+plot_grid(p1, p2)
+```
+
+<img src="man/figures/README-demo_plus-1.png" width="100%" />
+
+… let’s see how that goes
 
 ## License
 

@@ -127,6 +127,40 @@ legend("bottomright",
        levels(as.factor(iris$Species)))
 ```
 
+I've found the `BlGyRd` palette to be very handy for cases where we need a diverging palette with clear extremes and midpoint, but I've added `BlGyRdPlus` for even more variation either side of the middle:
+
+```{r demo_plus}
+library(ggplot2)
+library(dplyr)
+library(cowplot)
+
+p1 <- ggplot(faithfuld %>%
+         mutate(density = density - min(density),
+                density = density / max(density)),
+       aes(waiting, eruptions)) +
+  geom_raster(
+    aes(fill = density)
+  ) +
+  scale_fill_gradientn(
+    colours = iddo_palettes$BlGyRd
+  )
+
+p2 <- ggplot(faithfuld %>%
+         mutate(density = density - min(density),
+                density = density / max(density)),
+       aes(waiting, eruptions)) +
+  geom_raster(
+    aes(fill = density)
+  ) +
+  scale_fill_gradientn(
+    colours = iddo_palettes$BlGyRdPlus
+  )
+
+plot_grid(p1, p2)
+```
+
+... let's see how that goes
+
 ## License
 
 CC0

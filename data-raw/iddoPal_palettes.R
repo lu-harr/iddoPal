@@ -30,6 +30,8 @@ iddo_palettes_sequential <- pal_palette(
   BlWhRd = c("#1481E7","#6ECAEF","#ACE1F6","#EBF8FD", "#FFFFFF", "#FCE7E8", "#F19BA0", "#E7515A", "#E31B23"),
   BlRd = c("#1481E7","#14B1E7","#6ECAEF","#ACE1F6","#F19BA0", "#E7515A", "#E31B23", "#A7010C"),
   BlGyRd = c("#1481E7","#14B1E7","#6ECAEF","#ACE1F6","grey80","#F19BA0", "#E7515A", "#E31B23", "#A7010C"),
+  # I was looking for some more extreme limits and some more variation in the middle:
+  BlGyRdPlus = c("#0054DF","#1481E7","#14B1E7","#6ECAEF","#ACE1F6","#CCECF9","grey80","#F6C1C4","#F19BA0", "#E7515A", "#E31B23", "#A7010C", "#8D1B23")
 )
 
 plot(iddo_palettes_sequential)
